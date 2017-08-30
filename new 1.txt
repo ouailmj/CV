@@ -1,0 +1,5 @@
+document.querySelector('#files').addEventListener('change', function() {
+
+    alert(this.files[0].name);
+
+});

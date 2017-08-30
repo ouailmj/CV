@@ -1,0 +1,76 @@
+body{
+	margin:0;
+	padding:0;
+}
+#search .formulaire{
+	display: inline-block;
+	border: 1px solid #ababab;
+	padding: 3px 5px;
+	-moz-border-radius: 2em;
+	-moz-box-shadow: 0 2px 0 rgba(0,0,0,.1);
+	background: #fbfbfb;
+	background: -moz-linear-gradient(top, #FFF, #d4d4d4);
+	border-radius:80px;	
+}
+#search .formulaire .recherche{
+	background: #FFF;
+	padding: 5px 5px 5px 5px;
+	width: 300px;
+	border: 1px solid #ababab;
+	-moz-border-radius: 2em;
+	-moz-box-shadow:insert 0 2px 0 rgba(0,0,0,.1);
+	border-radius:80px;
+}
+#search .formulaire .go{
+	color:#FFF;
+	border: 1px solid #3f3f3f ;
+	font-size:13px;
+	height:28px;
+	width: 28px;
+	-moz-border-radius: 1,9em;
+	background: -moz-linear-gradient(top, #636363, #d4d4d4);
+	font-weight: bold;
+	border-radius:100px;	
+}
+
+#barre ul{
+	margin:0;
+	padding:0;
+	height:30px;
+}
+#barre li {
+	list-style:none;
+	float:left;
+	position:relative;
+	background-color:#999;
+}
+#barre li a {
+	color:#000;
+	text-decoration:none;
+	width:150px;
+	height:30px;
+	display:block;
+	text-align:center;
+	border:1px solid #000;
+	text-shadow:1px 1px 1px #ff0000;
+}
+#barre ul{
+	position:absolute;
+	top:31px;
+	visibility:hidden;
+	
+	}
+#barre li:hover ul {
+	visibility:visible;	
+}
+#barre li:hover{
+	background-color:#FFF;
+}
+#menu li ul a:hover{
+	color:#FFF;
+	background-color:#000
+	
+}
+#mail{
+	text-decoration:none;
+}

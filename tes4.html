@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<style type="text/css">
+  #balle {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border: black 2px solid;
+    border-radius : 10px;
+    position: relative;
+  }
+</style>
+
+<body>
+  <div id="balle"></div>
+  <script src="jquery-3.2.1.js"></script>
+  <script>
+    $(function() {
+      function bis() {
+        $('#balle').animate({left: '+=200'}, 200)
+                   .animate({top: '+=200'}, 200)
+                   .animate({left: '-=200'}, 222)
+                   .animate({top: '-=200'}, 222);
+      };
+      setInterval(bis, 2400);
+    });
+  </script>
