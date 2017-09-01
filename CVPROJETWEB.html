@@ -1,129 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>créez votre CV</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="STYLECVENTRER.css">
+	<title>creer votre cv en toute securité</title>
+	<meta charset = "utf-8">
+	<link rel="stylesheet" type="text/css" href="entre_cv.css">
+	<script src="jquery-3.2.1.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js" ></script>
+	<script>
+		$(document).ready(function() {
+			var $element = $('#bubble');
+			var phrases = [
+				'Nous vous garantisons ',
+				'Votre cv sera le plus marqué des tout',
+				'Performé par un de nos specialistes ;)',
+				'Et ',
+				];
+			var index = -1;
+			(function loopAnimation() {
+			index = (index + 1) % phrases.length;
+			bubbleText({
+            element: $element,
+            newText: phrases[index],
+            letterSpeed: 70,
+            callback: function() {
+                setTimeout(loopAnimation, 1000);
+            },
+			});
+			})();
+		});
+		$(function(){
+			$("#MyCnnStyleMenu li").MyCnnStyleMenu({
+			GoogleFontFamily:"Dancing Script",
+			GoogleFontSize:"16px"});
+		});
+	</script>
+	<script src="menu.js"></script>
+	<script src="animation_text.js"></script>
 </head>
 <body>
-<div id="fb-root"></div>
-<script src="jquery-3.2.1.js"></script>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.10";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.10";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-	<div class="tete" id="tete">
-		<div class="barreconnect" id="barreconnect" > 
-		<a href="" class="connect" id="connect">Se connecter</a>
-		</div>	
-		<div class="search" id="search">
-			<form method="post" action="search.php" class="formulaire" id="formulaire">
-			<input id="recherche" class="recherche" type="text" name="recherche" placeholder="une recherche">
-			<input class="go" id="go" name="go" type="submit" value="go">
-			</form>
-		</div>
-		<div class="logobarre" id="logobarre">
-			<div class="logo" id="logo">
-			</div>
-			<div class="barre" id="barre">
-					<br />
-					<li>
-					<a href="" class="acceuill" id="acceuill">acceuill</a>
-					</li>
-					<li>
-					<a href="" class="produit" id="produit">Produit</a>
-					<ul>
-						<li>
-							<a href="" id="web" class="web">web</a>
-						</li>
-						<li>
-							<a href="" id="Renseignement" class="Renseignement">Renseignement</a>
-						</li>
-						<li>
-							<a href="" id="Assistance" class="Assistance"> Assistance</a>
-						</li>
-					</ul>
-					</li>
-					<li>
-					<a href="" class="propos" id="propos">A propos</a>
-					<ul>
-						<li>
-							<a href="" id="Histoire" class="Histoire">Histoire</a>
-						</li>
-						<li>
-							<a href="" id="Carriere" class="Carriere">Carriere</a>
-						</li>
-						<li>
-							<a href="" id="Media" class="Media">Media</a>
-						</li>
-					</ul>
-					</li>
-					<li>
-					<a href="" class="outils" id="outils">Outils</a>
-					<ul>
-						<li>
-							<a href="" class="Carte" id="Carte">Carte</a>
-						</li>
-						<li>
-							<a href="" class="Logo" id="Logo">Logo</a>
-						</li>
-						<li>
-							<a href="" class="Posters" id="Posters">Posters</a>
-						</li>
-					</ul>
-					</li>
-					<li>
-						<a href="" class="contact" id="contact">Contact</a>
-					</li>
-			</div>
-			<br />
-			<div id="ptit_titre" class="ptit_titre">
-				<h3>
-					Aujourd'hui mieux qu'hier, demain mieux qu'aujourdhui
-				</h3>
-			</div>
-		</div>	
+	<div class="en_tete" id="en_tete">
+			<DIV id="headerDiv" align="center">
+	
+				<DIV id="logoDiv">
+  
+    <!-- logo //-->
+		<span id="bannerText">Site name</span>
+		<span id="bubble">venez decouvrir nos cv stylés </span>			
+				</DIV>
+  
+				<DIV id="menuDiv">
+	
+		<ul id="MyCnnStyleMenu">
+			<li><a href="">acceuill</a></li>
+			<li><a href="">produit</a></li>
+			<li><a href="">à propos</a></li>
+			<li><a href="">Outils</a></li>
+			<li><a href="">Aide</a></li>
+			<li></li>
+			<li class="connexion" id="connexion"><a href="">Se connecter</a></li>
+		</ul>
+				</DIV>
+  
+			</DIV>
 	</div>
 	<div class="corp" id="corp">
-		<h2>
-			Creez gratuitemet un superbe CV
-		</h2>
-		<a href="CVINSCRIPTION.html" class="bouton" id="bouton">
-			Creez votre CV
-		</a>
-		<div class="paragraphes" id="paragraphes">
-			<p>
-			Creez un CV perfectionné qui méritera sa place en en haut de la pile	
-			</p>
-			<p>
-				Le CV est ta carte de visite professionnelle. Il doit permettre à une entreprise d'avoir une vue d'ensemble de ton profil, de tes principales qualifications et lui donner envie de te rencontrer. C'est ton image de marque, ton argument de «vente». Prends le temps de le préparer avec rigueur et méthode.
-			</p>
-			<p>
-				Généralement, l'employeur prend très peu de temps pour lire un CV (environ 30 secondes). D'où l'importance de faire un document qui te présente fidèlement, de façon positive et efficace, mais qui sorte de l'ordinaire!
-			</p>
-			<p>
-				Gràce a nos specialistes en ce domaine
-			</p>
+		<div id="para1" class="para" >
+		<p>Aujourd'hui mieux qu'hier, demain mieux qu'aujourdhui</p>
+		<p>Creez gratuitemet un superbe CV</p>
 		</div>
-		<a href="design.html" class="bouton" id="bouton">Ouvrir un design CV</a>
+		<a  class="lien" href="">Creer votre cv</a>
+		<div id="para2" class="para">
+		<p>Creez un CV perfectionné qui méritera sa place en en haut de la pile</p>
+		</div>
+		<div id="para3" class="para">
+		<p>Le CV est ta carte de visite professionnelle. Il doit permettre à une entreprise d'avoir une vue d'ensemble de ton profil, de tes principales qualifications et lui donner envie de te rencontrer. C'est ton image de marque, ton argument de «vente». Prends le temps de le préparer avec rigueur et méthode.</p>
+		</div>
+		<div id="para4" class="para">
+		<p>Généralement, l'employeur prend très peu de temps pour lire un CV (environ 30 secondes). D'où l'importance de faire un document qui te présente fidèlement, de façon positive et efficace, mais qui sorte de l'ordinaire!</p>
+		</div>
+		<p>Gràce a nos specialistes en ce domaine</p><!--a refaire -->
+		<a class="lien" id="lien" href="">Ouvrir un design CV</a>
 	</div>
-	<div class="fb-like" data-href="http://localhost/exemple/CVPROJETWEB.html" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-	<div class="fb-comments" data-href="http://localhost/exemple/CVPROJETWEB.html" data-numposts="5"></div>
-	</body>
-<script src="SCRIPTCVENTRER.js">
-
-</script>
-
+</body>
 </html>
