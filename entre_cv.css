@@ -1,0 +1,185 @@
+body
+{
+	padding:0px;
+	margin:0px;
+	font-family:arial;
+}
+h1
+{
+	font-family: arial, serif;
+	font-size:16px;
+	color:#FF794A;
+	font-weight:regular;
+}
+#logoDiv
+{
+	width:1000px;
+	padding:0px;
+	margin:0px;
+	height:88px;
+	line-height:88px;
+	background:#fff;
+	text-align:left;
+}
+#bannerText
+{
+	font-family: 'Oswald', arial, serif;
+	font-size:40px;
+}
+#siteDescription
+{
+	font-family: arial, serif;
+	font-size:15px;
+	margin-left:20px;
+}
+#menuDiv
+{
+	width:1000px;
+	padding:0px;
+	margin:0px;
+	background:blue;
+	text-align:left;
+}
+#MyCnnStyleMenu
+{
+	width:1000px;
+	width:100%;
+	padding-bottom:0px;
+	margin-bottom:20px;
+	height:37px;
+	line-height:37px;
+	background:#A6A6A6;
+	padding-top:0px;
+	text-align:left;
+	margin:0px;
+	padding:0px;
+}
+#MyCnnStyleMenu a
+{
+	text-decoration:none;
+	color:#fff;
+}
+#headerDiv
+{
+	height:125px;
+}
+
+#MyCnnStyleMenu .current, #MyCnnStyleMenu .current
+{
+  font-weight:regular;
+  color:#fff !important;
+  background:#63CB31;
+  text-decoration:none !important;
+  cursor:default;
+}
+#MyCnnStyleMenu :hover 
+{
+  font-weight:regular;
+  color:#A34 !important;
+  background:#63CB31;
+  text-decoration:none !important;
+  cursor:default;
+  overflow:hidden;
+}
+#MyCnnStyleMenu li 
+{
+	display:inline;
+	float:left;
+	line-height:37px !important;
+	height:37px !important;
+	display:block;
+	background:#A6A6A6;
+	color:#fff;
+	font-weight:regular;
+}
+#MyCnnStyleMenu li span
+{
+  padding:20px;
+  padding-top:0px;
+  padding-bottom:0px;
+  line-height:37px !important;
+  height:37px !important;
+}
+
+#menuFooter
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	background:#63CB31;
+	height:10px;
+	width:100%;
+	overflow:hidden;
+	z-index:100;	
+}
+#menuOuterBgDiv
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:37px;
+	width:100%;
+	background:#A6A6A6;
+	overflow:hidden;
+	z-index:-1;
+}
+
+#pagebody
+{	
+	clear:both;
+	background:#fff;
+}
+
+.descriptionDiv
+{
+	width:1000px;
+	text-align:left;
+	margin-top:20px;
+}
+code
+{
+	line-height:1.3em;
+}
+pre
+{
+	border:1px solid #ccc;
+	padding:20px;
+}
+
+#connexion{
+	padding-left:500px;
+}
+
+p{
+	text-align:center;
+	font-family:cursive;
+}
+
+
+.para{
+	margin-bottom:20px;
+    border-style: solid;
+    border-width: 1px;
+	background-color:#effdeb;
+	border-color: grey;
+}
+#corp{
+	text-align:center;
+	margin:20px;
+	border-color:red;
+    border-style: solid;
+    border-width: 1px;
+	padding:20px;
+}
+#para2{
+	margin-top:20px;
+}
+
+#bubble {
+  font-size: 25px;
+  font-family: Comic Sans MS, Verdana, monospace;
+  color: #2d509b;
+  position:relative;
+  font-weight: bold;
+  float:right;
+}
