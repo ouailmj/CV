@@ -1,128 +1,240 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Inscription</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="STYLEINSCRIPTION.css">
-	</head>
-	<body>
-		<div class="entete" id="entete" >
-				<div class="barre" id="barre">
-					<br />
-					<li>
-					<a href="" class="acceuill" id="acceuill">acceuill</a>
-					</li>
-					<li>
-					<a href="" class="produit" id="produit">Produit</a>
-					<ul>
-						<li>
-							<a href="" id="web" class="web">web</a>
-						</li>
-						<li>
-							<a href="" id="Renseignement" class="Renseignement">Renseignement</a>
-						</li>
-						<li>
-							<a href="" id="Assistance" class="Assistance"> Assistance</a>
-						</li>
-					</ul>
-					</li>
-					<li>
-					<a href="" class="propos" id="propos">A propos</a>
-					<ul>
-						<li>
-							<a href="" id="Histoire" class="Histoire">Histoire</a>
-						</li>
-						<li>
-							<a href="" id="Carriere" class="Carriere">Carriere</a>
-						</li>
-						<li>
-							<a href="" id="Media" class="Media">Media</a>
-						</li>
-					</ul>
-					</li>
-					<li>
-					<a href="" class="outils" id="outils">Outils</a>
-					<ul>
-						<li>
-							<a href="" class="Carte" id="Carte">Carte</a>
-						</li>
-						<li>
-							<a href="" class="Logo" id="Logo">Logo</a>
-						</li>
-						<li>
-							<a href="" class="Posters" id="Posters">Posters</a>
-						</li>
-					</ul>
-					</li>
-					<li>
-						<a href="" class="contact" id="contact">Contact</a>
-					</li>
-				</div>
-				<div class="connexion" id="connexion" name="conexion">
-					
-					<a id="popups" onclick="divshow()">Se connecter</a>
-				</div>
-		</div>
-		<div class="corp" id="corp">
-			<div class="inscription" id="inscription">
-				<p>Vous etes nouveau sur ... inscriver vous</p>
-				<div id="abc">
-					<!-- Popup Div Starts Here -->
-					<div id="popupContact">
-						<form action="CVINSCRIPTION_TRAIT.php"  method="post" id="form" class="form" name="form">
-						<img id="close" src="images/3.png" onclick ="div_hide()">
-						<h2>remplissez le formulaire pour vous inscrire</h2>
-						<hr>
-						<input id="name" name="name" placeholder="Nom" type="text" required="required">
-						<input id="pass" class="pass" name="pass" placeholder="Mot de passe" type="password" required="required">
-						<input id="passcom" class="passcom" name="passcom" placeholder="Comfirmation mot de passe" type="password" required="required">
-						<input id="email" name="email" placeholder="Email" type="text" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-					
-						<input type="submit" name="submit" id="submit" value="send">
-						<p>En vous inscrivant, vous acceptez les <a href="" class="conditions" id="conditions">Conditions générales d'utilisation</a> et la <a href="" class="conditions" id="conditions">Politique de confidentialité</a> de ...</p>
-					</form>
-					</div>
-							<!-- Popup Div Ends Here -->
-				</div>
-							<!-- Display Popup Button -->
-			<a id="popup" onclick="div_show()">S'inscrire</a>
-				
-			</div>
-			<div id="para" class="para">
-				<h2>Rejoignez nos fidéle visiteurs qui utilisent ... pour leurs designs</h2>
-				<h3>Systemme d'utilisation le plus simple</h3>
-				<h3>Grâce à ..., tout le monde peut être designer</h3>
-				
-			</div>
-		</div>
+<head>
+	<title>Veuillez vous inscrire</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="inscription_connexion.css">
+	<script src="jquery-3.2.1.js"></script>
+	<script src="jquery.easing.1.3.js"></script>
 	<script>
-		var password = document.getElementById("pass")
-		, confirm_password = document.getElementById("passcom");
+	$(function() {
+		/* object to save the initial positions of each box */
+		var divinfo = {"initial": []};
+		/* index of the selected / clicked box */
+		var current = -1;
 
-		function validatePassword(){
-		if(password.value != confirm_password.value) {
-			confirm_password.setCustomValidity("Passwords Don't Match");
-		} else {
-			confirm_password.setCustomValidity('');
-		}
-		}
+		/* we save the index,top and left of each box */
+		$('#littleBoxes > div').each(function(){
+			var $this = $(this);
+			var initial = {
+					'index' : $this.index(),
+					'top'     : $this.css('top'),
+					'left'     : $this.css('left')
+			};
+			divinfo.initial.push(initial);
+		});
 
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
-//Function To Display Popup
-		function div_show() {
-			document.getElementById('abc').style.display = "block";
-		}
-//Function to Hide Popup
-		function div_hide(){
-			document.getElementById('abc').style.display = "none";
-		}
-	</script>	
-	</body>	
+		/* click event for the anchors inside of the boxes */
+		$('#littleBoxes a').bind('click',function(e){
+			var $this         = $(this);
+			var $currentBox    = $this.parent();
+			/* set a z-index lower than all the other boxes,
+			to see the other boxes animation on the top*/
+			$currentBox.css('z-index','1');
 
+			/* if we are clicking on an expanded box: */
+			if(current == $currentBox.index()){
+				/* put it back (decrease width, height,
+				and set the top and left back)
+				the previous positions are saved in the divinfo obj*/
+				$currentBox.stop().animate({
+						'top'  : divinfo.initial[$currentBox.index()].top,
+						'left' : divinfo.initial[$currentBox.index()].left,
+						'width'  : '90px',
+						'height' : '90px'
+				},800,'easeOutBack').find('.boxcontent').fadeOut();
 
+				$('#littleBoxes > div').not($currentBox).each(function(){
+					var $ele         = $(this);
+					var elemTop     = divinfo.initial[$ele.index()].top;
+					var elemLeft     = divinfo.initial[$ele.index()].left;
+					$ele.stop().show().animate({
+						'top'         : elemTop,
+						'left'        : elemLeft,
+						'opacity'    : 1
+					},800);
+				});
+				current = -1;
+			}
+			/* if we are clicking on a small box : */
+			else{
+				/* randomly animate all the other boxes.
+				Math.floor(Math.random()*601) - 150 creates a random
+				number between -150 and 450. This range is considering
+				the initial lefts/tops of the elements. It's not the exact
+				range, since we would have to calculate the range
+				based on each one of the boxes. Anyway, it fits our needs...
+				*/
+				$('#littleBoxes > div').not($currentBox).each(function(){
+					var $ele = $(this);
+					$ele.stop().animate({
+						'top' : (Math.floor(Math.random()*400) - 150) +'px',
+						'left': (Math.floor(Math.random()*400) - 150) +'px',
+						'opacity':0
+					},800,function(){
+						$(this).hide();
+					});
+				});
 
+				/* expand the clicked one;
+				also, fadeIn the content (boxcontent)
+				*/
+				var newwidth     = 450;
+				var newheight     = 450;
+				$currentBox.stop().animate({
+					'top'     : '0px',
+					'left'    : '0px',
+					'width' : newwidth +'px',
+					'height': newheight+'px'
+				},800,'easeOutBack',function(){
+					current = $currentBox.index();
+					$(this).find('.boxcontent').fadeIn();
+				});
+			}
+			e.preventDefault();
+	});
+});</script>
+</head>
+							<body>	
+<p> <?php 
+	if(isset($erreur)){
+		echo $erreur ;
+	}	
+	?> </p>
+<div id="littleBoxes" class="littleBoxes" style="margin:100px 500px;">
+	<div class="boxlink bg1" style="top:0px;left:0px;">
+		<a href="#">About</a>
+		<div class="boxcontent" style="width: 400px;height: 313px;">
+			<p>
+				3iw
+			</p>
+		</div>
+	</div>
+	<div class="bg5"
+			style="background-position:-90px 0;top:0px;left:95px;"></div>
+	<div class="bg5"
+			style="background-position:-180px 0;top:0px;left:190px;"></div>
+	<div class="bg5"
+			style="background-position:-270px 0;top:0px;left:285px;"></div>
 
+	<div class="bg5"
+			style="background-position:0 -90px;top:95px;left:0px;"></div>
+	<div class="boxlink bg2"
+			style="top:95px;left:95px;">
+		<a href="">inscription</a>
+		<div class="boxcontent" style="width: 400px;height: 313px;">
+			<form method="POST" action="inscription.php">
+				<table>
+				<tr>
+				<td>
+				<label for="nom">
+					inserez un nom :
+				</label>
+				</td>
+				<td>
+				<input type="text" name="nom" id="nom" required="required"><br />
+				</td>
+				</tr>
+				<tr>
+				<td>
+				<label for="pass">
+					inserez un mot de pass :
+				</label>
+				</td>
+				<td>
+				<input type="password" name="pass" id="pass" required="required">
+				</td>
+				</tr>
+				<tr>
+				<td>
+				<label for="pass">
+					confirmez le mot de pass :
+				</label>
+				</td>
+				<td>
+				<input type="password" name="conpass" id="conpass" required="required">
+				</td>
+				</tr>
+				<tr>
+				<td>
+				<label for="mail">
+					inserez votre email :
+				</label>
+				</td>
+				<td>
+				<input type="email" name="mail" id="mail" required="required">
+				</td>
+				</tr>
+				<tr>
+				<td>
+					<input type="submit" name="validation" value="valider">
+				</td>
+				</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div class="bg5"
+			style="background-position:-180px -90px;top:95px;left:190px;"></div>
+	<div class="bg5"
+			style="background-position:-270px -90px;top:95px;left:285px;"></div>
 
+	<div class="bg5"
+			style="background-position:0 -180px;top:190px;left:0px;"></div>
+	<div class="bg5"
+			style="background-position:-90px -180px;top:190px;left:95px;"></div>
+	<div class="boxlink bg3"
+			style="top:190px;left:190px;">
+		<a href="">Connexion</a>
+		<div class="boxcontent" style="width: 400px;height: 313px;">
+			<form method="POST" action="connexion.php">
+				<table>
+				<tr>
+				<td>
+				<label for="nom">
+					inserez votre nom :
+				</label>
+				</td>
+				<td>
+				<input type="text" name="nom" id="nom" required="required"><br />
+				</td>
+				</tr>
+				<tr>
+				<td>
+				<label for="pass">
+					inserez votre mot de pass :
+				</label>
+				</td>
+				<td>
+				<input type="password" name="pass" id="pass" required="required">
+				</td>
+				</tr>
+				<tr>
+				<td>
+				<input type="submit" name="validation" value="valider">
+				</td>
+				</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div class="bg5"
+			style="background-position:-270px -180px;top:190px;left:285px;"></div>
+
+	<div class="bg5"
+			style="background-position:0 -270px;top:285px;left:0px;"></div>
+	<div class="bg5"
+			style="background-position:-90px -270px;top:285px;left:95px;"></div>
+	<div class="bg5"
+			style="background-position:-180px -270px;top:285px;left:190px;"></div>
+	<div class="boxlink bg4"
+			style="top:285px;left:285px;">
+		<a href="">Contact</a>
+		<div class="boxcontent" style="width: 400px;height: 313px;">
+			<p>Veuillez me contacter...
+			</p>
+		</div>
+	</div>
+</div>
+						</body>
 </html>

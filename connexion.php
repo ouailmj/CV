@@ -1,19 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<title>connexion</title>
-</head>
-
-<body>
-
-<form method="post" action="conexion_post.php">
-<label for="pseudo">pseudo:</label><input type="text" name="pseudo" id="pseudo"><br />
-<label for="pass">mot de passe    :</label><input type="password" name="pass" id="pass"><br />
-<label for="cpass">confirmer mot de passe:</label><input type="password" name="cpass" id="passe"><br />
-<label for="mail">votre email:</label><input type="text" name="mail" id="mail"><br />
-<input type="submit" value="valider">
-
-</body>
-
-</html>
+<?php
+session_start();
+$bdd = new PDO('mysql:host=localhost;dbname=exp', 'root', '');
+if(ISSET($_POST['validation'])){
+if(!isset($_COOKIE['nom']) AND !isset($_COOKIE['pass'])){	
+	if(ISSET($_POST['nom']) AND ISSET($_POST['pass'])){
+		$pass=sha1($_POST['pass']);
+		$nom=htmlspecialchars($_POST['nom']);
+		$requser = $bdd->prepare("SELECT * FROM membres WHERE nom = ? AND pass = ?");
+		$requser->execute(array($nom, $pass));
+		$userexist = $requser->rowCount();
+		if($userexist == 1){
+			$userinfo = $requser->fetch();
+			setcookie("nom", $nom, time() + (86400*100), "/");
+			setcookie("pass", $pass, time() + (86400*100), "/");
+			$_SESSION['id']=$userinfo['id'];
+			$_SESSION['nom']=$userinfo['nom'];
+			$_SESSION['mail']=$userinfo['mail'];
+			header("Location : profile.html");
+		}
+		else{
+			header("Location : CVINSCRIPTION.html");
+			$erreur = "nom ou mot de pass incorrect";
+		}
+	}
+}
+else{
+	$nom = htmlspecialchars($_COOKIE['nom']);
+	$pass = sha1($_COOKIE['pass']);
+	$requser = $bdd->prepare("SELECT * FROM membres WHERE nom = ? AND pass = ?");
+	$requser->execute(array($nom, $pass));
+	$userexist = $requser->rowCount();
+	if($userexist == 1){
+			$userinfo = $requser->fetch();
+			setcookie("nom", $nom, time() + (86400*100), "/");
+			setcookie("pass", $pass, time() + (86400*100), "/");
+			$_SESSION['id']=$userinfo['id'];
+			$_SESSION['nom']=$userinfo['nom'];
+			$_SESSION['mail']=$userinfo['mail'];
+			header("Location : profile.html");
+	}
+	else{
+			header("Location : CVINSCRIPTION.html");
+			$erreur = "nom ou mot de pass incorrect";
+		}
+}	
+}
+?>	

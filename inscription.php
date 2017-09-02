@@ -1,19 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Page d'inscription</title>
-        <meta = charset="UTF8" />
-    </head>
- 
-    <body>
-        <h1>Formulaire d'inscription</h1>
- 
-        <form method="post" action="inscription_post.php">
-            <p><label for="pseudo">Pseudo :</label><input type="text" name="pseudo" id="pseudo" required="required" autofocus placeholder="ex:julien" /></p>
-            <p><label for="pass">Mot de passe :</label><input type="password" name="pass" id="pass" /></p>
-            <p><label for="passverifie">Mot de passe :</label><input type="password" name="passverifie" id="passverifie" /></p>
-            <p><label for="mail">Adresse e-mail :</label><input type="email" name="mail" id="mail" placeholder="exemple@mail.fr" /></p>
-            <p><input type="submit" value="envoyer"></p>
-        </form>
-    </body>
-</html>
+<?php
+$bdd = new PDO('mysql:host=localhost;dbname=', 'root', '');
+
+if(isset($_POST['validation'])){
+	if(isset($_POST['nom']) AND isset($_POST['pass']) AND isset($_POST['conpass']) AND isset($_POST['mail'])){
+		if($_POST['pass'] = $_POST['conpass']){	
+			$nom = htmlspecialchars($_POST['nom']);
+			$pass = sha1($_POST['pass']);
+			$conpass = sha1($_POST['conpass']);
+			$mail = htmlspecialchars($_POST['mail']);
+			$requser = $bdd->prepare("SELECT * FROM membres WHERE nom = ?");
+			$requser->execute(array($nom));
+			$nomexist= $requser->rowCount();
+			if($nomexist == 0){
+				$insertmbr=bdd->prepare("INSERT INTO membre (nom, mail, pass) VALUES(?, ?, ?)");
+				$insertmbr->execute(array($nom, $mail, $pass));
+				header('Location: profil.html');
+			}
+			else{
+				$erreur = "nom deja utilisé";
+			}
+		}
+	}
+}
+?>

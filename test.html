@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var spanTime= document.getElementById('para');
+var time= spanTime.innerHTML.substring(0,1);
+ 
+function refreshTimer ()
+{
+ time--;
+ spanTime.innerHTML = time +' seconde';
+  
+ if (time > 1)
+ {
+  spanTime.innerHTML+= 's';
+ }
+  
+ else if (time==0)
+ {
+  window.location='www.google.com';
+  clearInterval();
+ }
+}
+ 
+setInterval(refreshTimer, 1000);
+</script>
+</head>
+<body>
+<span id="para"></span>
+</body>
+</html>
