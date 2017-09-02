@@ -7,6 +7,24 @@
 	<script src="jquery-3.2.1.js"></script>
 	<script src="jquery.easing.1.3.js"></script>
 	<script>
+		$(document).ready(function() {
+			$("#conpass").keyup(validate);
+			});
+
+
+		function validate() {
+		var password1 = $("#pass").val();
+		var password2 = $("#conpass").val();
+
+    
+ 
+		if(password1 != password2) {
+			$("#validate-status").text("passwords ne sont pas similaire");        
+		}
+    
+		}
+</script>
+	<script>
 	$(function() {
 		/* object to save the initial positions of each box */
 		var divinfo = {"initial": []};
@@ -168,6 +186,11 @@
 				<tr>
 				<td>
 					<input type="submit" name="validation" value="valider">
+				</td>
+				</tr>
+				<tr>
+				<td colspan=2>
+				<p id="validate-status"></p>
 				</td>
 				</tr>
 				</table>

@@ -10,7 +10,7 @@ if(isset($_POST['validation'])){
 			$mail = htmlspecialchars($_POST['mail']);
 			$requser = $bdd->prepare("SELECT * FROM membres WHERE nom = ?");
 			$requser->execute(array($nom));
-			$nomexist= $requser->rowCount();
+			$nomexist = $requser->rowCount();
 			if($nomexist == 0){
 				$insertmbr=bdd->prepare("INSERT INTO membre (nom, mail, pass) VALUES(?, ?, ?)");
 				$insertmbr->execute(array($nom, $mail, $pass));
