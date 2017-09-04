@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Aceuill</title>
+<meta charset="utf-8">
+<script src="jquery-3.2.1.js"></script>
+<script src="jquery-1.6.1.min.js"></script>
+<script src="jquery.easing.1.3.js"></script>
+<script src="jquery.bgImageMenu.js"></script>
+<link rel="stylesheet" href="styleIE67.css" />
+<link rel="stylesheet" href="sbimenu.css" />
+<link rel="stylesheet" href="reset.css" />
+
+</head>
+<body>
+<div id="sbi_container" class="sbi_container" style="height: 600px; width: 1350px;">
+	<div class="sbi_panel" data-bg="images/1.jpg">
+		<a href="#" class="sbi_label">About</a>
+		<div class="sbi_content">
+			<ul>
+				<li><a href="#">Subitem</a></li>
+				<li><a href="#">Subitem</a></li>
+				<li><a href="#">Subitem</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="sbi_panel" data-bg="images/2.jpg">
+		<a href="#" class="sbi_label">About</a>
+		<div class="sbi_content">
+			<ul>
+				<li><a href="#">Subitem</a></li>
+				<li><a href="#">Subitem</a></li>
+				<li><a href="#">Subitem</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="sbi_panel" data-bg="images/2.jpg">
+		<a href="#" class="sbi_label">About</a>
+		<div class="sbi_content">
+			<ul>
+				<li><a href="#">Subitem</a></li>
+				<li><a href="#">Subitem</a></li>
+				<li><a href="#">Subitem</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="sbi_panel" data-bg="images/2.jpg">
+		<a href="#" class="sbi_label">About</a>
+		<div class="sbi_content">
+			<ul>
+				<li><a href="#">Subitem</a></li>
+				<li><a href="#">Subitem</a></li>
+				<li><a href="#">Subitem</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script>
+$('#sbi_container').bgImageMenu({
+	defaultBg	: 'images/default.jpg',
+	menuSpeed	: 300,
+	border		: 1,
+	type		: {
+		mode		: 'verticalSlideAlt',
+		speed		: 450,
+		easing		: 'easeOutBack'
+	}
+});
+</script>
+</body>
+</html>
