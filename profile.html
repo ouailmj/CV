@@ -38,33 +38,33 @@
 	}
 		  else //fold and show the content
 		fold($li_e);
-});
-function m_enter(){
-	var $this 	= $(this);
-	clearTimeout(menu_time);
-	menu_time 	= setTimeout(function(){
-	//img
-	$this.find('img').stop().animate({'top':'0px'},400);
-	//cc_submenu ul
-	$this.find('.cc_submenu > ul').stop().animate({'height':'200px'},400);
-	},200);
-}
-function m_leave(){
-	var $this = $(this);
-	clearTimeout(menu_time);
-	//img
-	$this.find('img').stop().animate({'top':'-600px'},400);
-	//cc_submenu ul
-	$this.find('.cc_submenu > ul').stop().animate({'height':'0px'},400);
-}
-$('#cc_back').bind('click',unfold);
-function fold($li_e){
-	var $item		= $li_e.closest('.cc_item');
+		});
+	function m_enter(){
+		var $this 	= $(this);
+		clearTimeout(menu_time);
+		menu_time 	= setTimeout(function(){
+		//img
+		$this.find('img').stop().animate({'top':'0px'},400);
+		//cc_submenu ul
+		$this.find('.cc_submenu > ul').stop().animate({'height':'200px'},400);
+		},200);
+	}
+	function m_leave(){
+		var $this = $(this);
+		clearTimeout(menu_time);
+		//img
+		$this.find('img').stop().animate({'top':'-600px'},400);
+		//cc_submenu ul
+		$this.find('.cc_submenu > ul').stop().animate({'height':'0px'},400);
+	}
+	$('#cc_back').bind('click',unfold);
+	function fold($li_e){
+		var $item		= $li_e.closest('.cc_item');
 
-	var d = 100;
-	var step = 0;
-	$items.unbind('mouseenter mouseleave');
-	$items.not($item).each(function(){
+		var d = 100;
+		var step = 0;
+		$items.unbind('mouseenter mouseleave');
+		$items.not($item).each(function(){
 		var $item = $(this);
 		$item.stop().animate({
 			'marginLeft':'-140px'
@@ -75,9 +75,9 @@ function fold($li_e){
 				showContent($li_e.attr('class'));
 			}
 		});
-	});
-}
-function unfold(){
+		});
+	}
+	function unfold(){
 	$('#cc_content').stop().animate({'left':'-700px'},600,function(){
 		var d = 100;
 		var step = 0;
@@ -108,37 +108,85 @@ function unfold(){
 			});
 		});
 	});
-}
-function showContent(idx){
-	$('#cc_content').stop().animate({'left':'140px'},200,function(){
+	}
+	function showContent(idx){
+		$('#cc_content').stop().animate({'left':'140px'},200,function(){
 		$(this).find('.'+idx).fadeIn();
-	});
-}
-function hideContent(){
-	$('#cc_content').find('div').hide();
-}
+		});
+	}
+	function hideContent(){
+		$('#cc_content').find('div').hide();
+	}
 });
 	</script>
 </head>
 <body>
 	<div id="cc_menu" class="cc_menu">
 	<div class="cc_item" style="z-index:5;">
-		<img src="images/1.jpg" alt="image" />
-		<span class="cc_title">Collection</span>
+		<img src="" alt="image" />
+		<span class="cc_title">profile</span>
 		<div class="cc_submenu">
 			<ul>
-				<li class="cc_content_1">Winter 2010</li>
-				<li class="cc_content_2">Spring 2011</li>
+				<li class="cc_content_1"><a>compte</a></li>
+				<li class="cc_content_2"><a>acceuil</a></li>
+				<li class="cc_content_3"><a>historique personnel</a></li>
+				<li class="cc_content_4"><a>reglage</a></li>
+				<li class="cc_content_6"><a>deconnexion</a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="cc_item" style="z-index:4;">
-		<img src="images/2.jpg" alt="image" />
-		<span class="cc_title">Stores</span>
+		<img src="" alt="image" />
+		<span class="cc_title">Modeles</span>
 		<div class="cc_submenu">
 			<ul>
-				<li class="cc_content_3">Milano</li>
-				<li class="cc_content_4">Paris</li>
+				<li class="cc_content_8"><a href="#">2017</a></li>
+				<li class="cc_content_8"><a href="#">2016</a></li>
+				<li class="cc_content_8"><a href="#">2015</a></li>
+				<li class="cc_content_8"><a href="#">2014</a></li>
+				<li class="cc_content_8"><a href="#">autres...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="cc_item" style="z-index:3;">
+		<img src="" alt="image" />
+		<span class="cc_title">Textes</span>
+		<div class="cc_submenu">
+			<ul>
+			<p>Ajouter un titre</p>
+				<li class="cc_content_8"><a href="#">2017</a></li>
+				<li class="cc_content_8"><a href="#">2016</a></li>
+				<li class="cc_content_8"><a href="#">2015</a></li>
+				<li class="cc_content_8"><a href="#">2014</a></li>
+				<li class="cc_content_8"><a href="#">autres...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="cc_item" style="z-index:2;">
+		<img src="" alt="image" />
+		<span class="cc_title">Textes</span>
+		<div class="cc_submenu">
+			<ul>
+			<p>Ajouter un Fond</p>
+				<li class="cc_content_8"><a href="#">2017</a></li>
+				<li class="cc_content_8"><a href="#">2016</a></li>
+				<li class="cc_content_8"><a href="#">2015</a></li>
+				<li class="cc_content_8"><a href="#">2014</a></li>
+				<li class="cc_content_8"><a href="#">autres...</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="cc_item" style="z-index:1;">
+		<img src="" alt="" />
+		<span class="cc_title">images</span>
+		<div class="cc_submenu">
+			<ul>
+			<p>Telecharger vos propre images</p>
+				<li class="cc_content_8"><a href="#">2017</a></li>
+				<li class="cc_content_8"><a href="#">2016</a></li>
+				<li class="cc_content_8"><a href="#">2015</a></li>
+				<li class="cc_content_8"><a href="#">2014</a></li>
+				<li class="cc_content_8"><a href="#">autres...</a></li>
 			</ul>
 		</div>
 	</div>
@@ -150,6 +198,34 @@ function hideContent(){
 		</div>
 		<div class="cc_content_2">
 			<h1>Spring 2011</h1>
+			<p>Some content</p>
+		</div>
+		<div class="cc_content_3">
+			<h1>Winter 2010</h1>
+			<p>Some content</p>
+		</div>
+		<div class="cc_content_4">
+			<h1>Winter 2010</h1>
+			<p>Some content</p>
+		</div>
+		<div class="cc_content_5">
+			<h1>Winter 2010</h1>
+			<p>Some content</p>
+		</div>
+		<div class="cc_content_6">
+			<h1>Winter 2010</h1>
+			<p>Some content</p>
+		</div>
+		<div class="cc_content_7">
+			<h1>Winter 2010</h1>
+			<p>Some content</p>
+		</div>
+		<div class="cc_content_8">
+			<h1>Winter 2010</h1>
+			<p>Some content</p>
+		</div>
+		<div class="cc_content_9">
+			<h1>Winter 2010</h1>
 			<p>Some content</p>
 		</div>
 	</div>
